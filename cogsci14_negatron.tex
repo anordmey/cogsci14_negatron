@@ -8,6 +8,7 @@
 \usepackage{graphicx}
 \usepackage{topcapt}
 \usepackage{color}
+\usepackage{ upgreek }
 %\usepackage{setspace}
 %\singlespacing
 
@@ -344,15 +345,71 @@ In studies 1 and 2, we demonstrated that a simple visual context can facilitate 
 
 Previous work has proposed that the processing difficulty of a word is the surprisal of that word, calculated as the -log of the probability of the word occurring in a given syntactic and semantic context \cite{levy2008}.  Here, we extend this theory to the realm of pragmatics.  Due to the difficulty of calculating the informativeness of a false sentence, we focused on modeling only the true sentences.  
 
-We modeled the behavior of participants in our experiments by calculating the surprisal of an utterance given the context and a specified referent.  To calculate the surprisal, we must first calculate the probability of the utterance occurring.  We define the probability of a phrase as...((((Still figuring out model))))
+\begin{figure}
+\begin{center} 
+\includegraphics[width=3.25in]{figures/model1_comparison.pdf}
+\caption{\label{fig:model1_sims} Model predictions for a model of utterance surprisal, compared to reaction times in Study 2.  Error bars represent the 95\% confidence intervals.}
+\end{center} 
+\end{figure}
+
+We modeled the behavior of participants in our experiments by calculating the surprisal of an utterance given the context and a specified referent.  To calculate the surprisal, we must first calculate the probability of the utterance occurring.  We define the probability of a phrase as proportional to the expected utility of that word.  ((Note: I include alpha here so I probably need to explain it and explain that we set alpha=1? I'm not sure how much detail to go into in explaining the model, in general.  I'm having trouble figuring out what I should cut and what I should include.))
+
+\begin{equation}\label{eq:pw1}
+P(w | r_s, C) \propto  e^{\alpha U(w;r_s,C)}
+\end{equation}
+
+We define the utility function as the informativeness of the phrase minus the cost
+
+\begin{equation}\label{eq:utility}
+e^{\alpha U(w;r_s,C)} = I(w;r_s, C) - D(w)
+\end{equation}
+
+Drawing on previous work on modeling pragmatic reasoning, we quantify informativeness as the negative surprisal of the extension of the utterance in context; that is, the number of objects in the context for which that utterance is true.  
+
+\begin{equation}\label{eq:info}
+I(w;r_s, C) = -(-log(|w|^{-1}))
+\end{equation}
+
+Cost can be defined in a number of ways; in this model we define it as the number of words in the utterance multiplied by a cost-per-word parameter.  Note that in our experiment, the negative sentences always have exactly one word more than the positive sentences.  Combining equations 1-3, and summing over all possible words in the vocabulary V, we get:
+
+\begin{equation}\label{eq:pw2}
+P(w | r_s, C) = \frac{ e^{log(|w|^{-1}) - D(w)}} {\sum_{w' \in V}{e^{log(|w'|^{-1}) - D(w')}}}
+\end{equation}
+
+We can then calculate the surprisal of the utterance by taking the -log of the probability of the word, which we predict will be related to participants reaction times to respond to the same sentences in the same contexts \cite{levy2008}.
+
+This model makes the prediction that as the number of e.g. boys with apples in the context increases, the informativeness of a negative sentences such as ``Bob has no apples'' increases, because the negative sentence selects an increasingly smaller subset of the context, and sentences that are more informative are higher probability.  As the probability of a sentence increases, the surprisal will decrease, and we expect these surprisal scores to be positively correlated with reaction times.
+
+We tested this model on the nine context conditions from studies 2a and 2b (i.e. four possible contexts in 2a and five in 2b), with cost-per-word = 2 (CHECK THIS), and compared the model predictions (surprisal) to our data in Studies 2a and 2b.  A plot of model fit can be seen in Figure \ref{fig:model1_sims}. 
+
+This model was a reasonable fit to our experimental data, with a correlation of $r=.72$ (not sure how to report this...significance?  Should I report positive/negative sentence correlations, or just this correlation with all of the data?).  The model accurately predicts that negative sentences are more surprising (i.e. higher reaction times), and captures many of the context effects.  However, there are several points that this model is failing to capture.  Specifically, it is underestimating the surprisal of None contexts for positive sentences, and All contexts for negative sentences; that is, our model is failing to capture the U-shaped relationship found between context and reaction time in Study 2.  
+
+To understand the shortcomings of our model, we considered the experimental contexts which our model was failing to accurately predict surprisal: None contexts for positive sentences, and All contexts for negative sentences.  In our experimental paradigm, participants first saw the context slide \emph{without} the target, and then later saw the target picture separate from the context.  For None contexts followed by a True Positive trial, this means that participants saw three boys with nothing, and then saw a boy holding something.  For All contexts followed by a True Negative trial, participants saw three boys holding identical items, and then saw a boy with nothing.  In these trials, participants may have found the target picture surprising, regardless of the sentence that they read.  
+
+To account for this, we included a term of "Person Surprisal" in our model.  We calculate the probability of seeing a particular person, given the context C, as the number people who match that particular person (i.e. number of people with apples for positive trials, and the number of people without apples for negative trials), divided by the total number of people in the context, with a smoothing parameter lambda: ((I don't really know how to write this equation))
+
+\begin{equation}\label{eq:pp}
+P(person | C) =  \frac{n MatchingPeople  + \uplambda}{nTotalPeople + 2\uplambda}
+\end{equation}
+
+We then added the -log of the probability of seeing a particular person given the context (Equation \ref{eq:pp}) to the -log of the probability of hearing an utterance given the referent and the context (Equation \ref{eq:pw2}), with a weighting parameter w to adjust the different effects of these two surprisals, to get a complete model of surprisal:
+
+\begin{equation}\label{eq:total}
+surprisal = -log(P(person|C)) + w*-log(P(w|r_s, C))
+\end{equation}
 
 \begin{figure}
 \begin{center} 
 \includegraphics[width=3.25in]{figures/model2_comparison.pdf}
-\caption{\label{fig:addition_subs} A comparison of model predictions and reaction times in Study 2.  Error bars represent the 95\% confidence intervals.}
+\caption{\label{fig:model2_sims} Model predictions for a model of Total Surprisal (Equation \ref{eq:total}, compared to reaction times in Study 2.  Error bars represent the 95\% confidence intervals.}
 \end{center} 
 \end{figure}
 
+We tested this new model on the nine context conditions from studies 2a and 2b, with cost-per-word = .5, lambda=.2, and w=.4 (CHECK THIS), and compared the new model predictions to our data in Studies 2a and 2b.  A plot of model fit can be seen in Figure \ref{fig:model2_sims}. 
+
+This model showed a strong fit to our data, with a correlation of $r=.89$ for all data, and separate correlations of $r=.78$ for positive sentences and $r=.91$ for negative sentences.  (((NOTE: I'm wondering if I should first fit the model to Study 2a, and then use those parameter values and report fit for Study 2b or the total data set.  This is what I did when I presented the model, but I'm not sure if that takes up too much space?)))
+
+Do I need a specific discussion here or can I just transition directly into the general discussion?
 
 \section{General Discussion}
 
