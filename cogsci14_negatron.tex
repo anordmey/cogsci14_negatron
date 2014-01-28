@@ -3,7 +3,7 @@
 \usepackage{cogsci}
 \usepackage{pslatex}
 \usepackage{pdfsync}
-\usepackage{apacite}
+\usepackage{apacite2}
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{topcapt}
@@ -16,18 +16,6 @@
 \title{A Pragmatic Account of the Processing of Negative Sentences}
 \author{{\large \bf Ann E. Nordmeyer} \\ \texttt{anordmey@stanford.edu}\\ Department of Psychology \\ Stanford University \\ 
 \And {\large \bf Michael C. Frank} \\ \texttt{mcfrank@stanford.edu} \\ Department of Psychology \\ Stanford University \\ }
-
-%\affiliation{Stanford University}
-
-%\abstract{Put Abstract Here.}
-
-%\vspace{3.0ex}
-
-%\noindent Please address correspondence to: Ann E. Nordmeyer, Department of Psychology, Stanford University, 450 Serra Mall, Building 420 (Jordan Hall), Stanford, CA 94305, email: \texttt{anordmey@stanford.edu}.}
-
-%shorttitle{FYP Proposal}
-%\rightheader{FYPP}
-%\leftheader{A. E. Nordmeyer}
 
 \begin{document}
 \maketitle
@@ -45,35 +33,37 @@ Negation; sentence processing; pragmatics
 
 %REVAMP TO FOCUS ON INFORMATIVENESS/PRAGMATICS HYPOTHESIS
 
-Language is a powerful tool that allows us to describe not only the state of the world as we see it, but also the world as it is not.  For example, if I am a regular at a coffee shop and always order a chai latte, and the shop has run out of chai, the barista might say ``We don't have any chai today'' when I enter the shop.  In situations like these, where expectations are violated, negative sentences can be very informative.  
+Language is a powerful tool that allows us to describe not only the state of the world as we see it, but also the world as it is not.  If I am a regular at a coffee shop and always order chai, but the shop has run out today, the barista might say ``We don't have any chai today'' when I enter the shop.  Negative sentences are very informative when expectations are violated.
 
-Although negation is critical for communicating many meanings, processing negation can be slow and effortful \cite{hclark1972, carpenter1975, just1971, just1976}.  Research using electroencephalography has shown that sentences where the final noun is semantically unexpected elicit a more negative peak at the N400, even when a negative makes the sentence logically true.  Similar results have been found in probe-recognition tasks \cite{kaup2003, kaup2006, hasson2006}.  Collectively this work suggests that negative sentences are difficult to process.
+Although negation is critical for communicating many meanings, processing negation can be slow and effortful \cite{hclark1972, carpenter1975, just1971, just1976}. In EEG experiments, sentences where the final noun is semantically unexpected elicit an N400 response, and this response is found even when a negative makes the sentence logically true---suggesting that negation is slow to integrate with the rest of the sentence (CITES).  Similar results have been found in probe-recognition tasks \cite{kaup2003, kaup2006, hasson2006}.  Collectively this work suggests that negative sentences can be quite difficult to process.
  
-There is a critical difference, however, between evaluating a sentence in the lab and comprehending speech in the real world. According to Grice's Cooperative Principle \cite{grice1975}, speakers should be informative, relevant, and unambiguous when speaking.  Negative sentences presented without context violate this principle.  In the previous example, if the barista says "we don't have chai today" to a customer who always orders coffee, this would be neither relevant nor informative.  In general, negative utterances are produced when there is some expectation that the speaker wishes to negate.  
+There is a critical difference, however, between evaluating a sentence in the lab and comprehending speech in the real world. According to Grice's Cooperative Principle \cite{grice1975}, speakers should be truthful, relevant, and informative when speaking.  Negative sentences presented without context violate this principle.  If a barista says ``we don't have chai today'' to a customer who always orders coffee, this utterance would be neither relevant nor informative.  In general, negations are produced when there is some expectation that the speaker wishes to reverse.  
 
-Congruent with this Gricean idea, a number of studies have shown that the difficulty processing negative sentences is mitigated by the presence of a supportive pragmatic context \cite{wason1965, glenberg1999, ludtke2006, nieuwland2008, dale2011}.   Other work has found that that some contexts are more effective than others at reducing processing demands; for example, contexts that explicitly mention a negated characteristic \cite{ludtke2006} or that present the negation within a dialogue \cite{dale2011} elicit faster reaction times.  These studies do not directly test whether pragmatic expectations are the source of the processing cost.  Our current work tests that hypothesis.  
+Congruent with this Gricean idea, a number of studies have shown that the difficulty processing negative sentences is mitigated by the presence of a supportive context \cite{wason1965, glenberg1999, ludtke2006, nieuwland2008, dale2011}. Some contexts are more effective than others at reducing processing demands, however. For example, contexts that explicitly mention a negated characteristic \cite{ludtke2006} or that present the negation within a dialogue \cite{dale2011} elicit faster reaction times, perhaps because the negation is more informative. But although these findings are congruent with the idea that pragmatic expectations are the source of negation's processing cost, they do not directly test that hypothesis.  The goal of our current work is to make such a test.
 
-What is the computational mechanism by which context influences the processing of negation?  We propose that negative sentences are more informative in contexts that set up a strong expectation that is violated.  Recent work by Frank and Goodman (2012) \nocite{frank2012} has attempted to quantify the pragmatic inferences that adults make when playing simple ``language games''. The assumption underlying this work is that speakers are informative -- they will produce utterances that will pick out smaller subsets of the context, leaving as little ambiguity as possible for the listener.  We use this theory to help clarify the role of context in negative sentence processing. 
+We propose that negative sentences are more informative in contexts that set up a strong expectation that is violated. If the processing cost of negation is pragmatic, then more informative negative sentences should elicit smaller reaction times. How should we quantify informativeness in context? Recent modeling work attempts to quantify pragmatic reasoning in simple experimental contexts \cite{frank2012,goodman2013}. The assumption underlying this work is that speakers are informative---they will produce utterances that will pick out smaller subsets of the context, leaving as little ambiguity as possible for the listener.  We use this definition of informativeness to provide a quantitative interpretation of our hypothesis.
 
-If listeners predict that speakers will choose informative sentences, they should process negative sentences that are highly informative faster than negative sentences that are less informative in context; that is, more informative negative sentences should elicit smaller reaction times.  This hypothesis draws on the idea of \emph{surprisal}, an information-theoretic measure of the amount of information contained in an utterance.  This theory proposes that expectations about a speaker's utterance choice are related to a listener's speed to evaluate that sentence  (see \citeNP{levy2008} for a syntactic theory of surprisal).  
+To link informativeness---as computed in a probabilistic model---to reaction time, we assume that reaction time is proportional to \emph{surprisal}. Surprisal is an information-theoretic measure of the amount of information carried by an event (in this case, an utterance in some context). Surprisal has been used effectively to predict reaction times from probabilistic models \cite{levy2008}; this work provides inspiration for our current model. 
 
-We test the hypothesis that pragmatic surprisal explains the processing cost of negative sentences.  We begin by measuring this processing cost, replicating previous findings that context facilitates the processing of negation (Study 1).  We then investigate the effect of the strength of the context by parametrically varying the base rate of a negated feature (Studies 2a and 2b).  Although previous work has shown that some contexts are more effective at reducing processing time than others \cite{ludtke2006, dale2011}, this is the first attempt to systematically vary the context and show that there is a graded effect of context on the processing of negative sentences.  We then develop a model to compute the surprisal of a sentence in these contexts, and find that a model which accounts for the surprisal of a sentence and the surprisal of a referent predicts the relationship between context and reaction time.  From this we conclude that context affects negative sentence processing by influencing the amount of information conveyed by a negative sentence.
+We test the hypothesis that pragmatic surprisal explains the processing cost of negative sentences. Study 1 measures this processing cost, replicating previous findings that context facilitates the processing of negation (Study 1).  Study 2 investigates the effect of the strength of the context by parametrically varying the base rate of a negated feature.  We compute the surprisal of sentences in these contexts, and find that a model of pragmatic informativeness predicts the relationship between context and reaction time.  These results support the idea that context affects negative sentence processing by modulating listeners' expectations. % trying to link back to the idea of expectations
 
 \section{Study 1: Context vs. No Context}
-To test whether non-linguistic contextual expectations alleviate the processing cost of negative sentences, we constructed a simple sentence verification task, similar to previous work (e.g. Clark and Chase, 1972).  Previous studies of the relationship between context and negation have required participants to actively engage with the context, either by describing pictures \cite{wason1965} or reading sentences\cite{glenberg1999}.  Here, half of our participants passively view a visual context (compared to a control group who viewed a blank slide) before performing the sentence verification task.   This study explores whether a passively-viewed visual context is sufficient for facilitating the processing of negative sentences.  
+
+To test whether non-linguistic contextual expectations alleviate the processing cost of negative sentences, we constructed a simple sentence verification task based on \citeA{hclark1972}.  Previous studies of the relationship between context and negation have required participants to actively engage with the context, either by describing pictures \cite{wason1965} or reading sentences \cite{glenberg1999}.  Here, participants passively viewed a visual context, eliminating linguistic confounds in previous work.  
+ % This study explores whether a passively-viewed visual context is sufficient for facilitating the processing of negative sentences.  
 
 \subsection{Method}
 
 \subsubsection{Participants}
 
-We recruited 100 participants to participate in an online experiment through the Amazon's Mechanical Turk (mTurk) website.\footnote{We programmed studies using Javascript, allowing us to collect reaction times for participants' responses.  Previous work has demonstrated that mTurk is an effective tool for collecting reaction time data \cite{crump2013}.}  Participants ranged in age from 18-65; 63 were male and 37 female.  We restricted participation to individuals in the United States. We paid participants 30 cents to participate in the Study, which took approximately 5 minutes to complete.  
+We recruited 100 participants to participate in an online experiment through the Amazon's Mechanical Turk (mTurk) website.\footnote{We programmed studies using Javascript, allowing us to collect reaction times for participants' responses.  Previous work has demonstrated that mTurk is an effective tool for collecting reaction time data \cite{crump2013}.}  Participants ranged in age from 18-65; 63 were male and 37 female.  We restricted participation to individuals in the United States. We paid participants 30 cents to participate, which took approximately 5 minutes to complete.  
 
 \subsubsection{Stimuli}
 
 \begin{figure}[t]
 \begin{center} 
 \includegraphics[width=3.25in]{figures/negatron_trialfig2.pdf}
-\caption{\label{fig:trial} An example trial, consisting of two separate slides (shown sequentially):a context slide and a trial slide (true negative). }
+\caption{\label{fig:trial} An example trial, consisting of two separate slides (shown sequentially): a context slide and a trial slide (true negative). }
 \vspace{-5mm}
 \end{center} 
 \end{figure}
@@ -85,9 +75,10 @@ Participants were randomly assigned to the ``no context'' condition or the ``con
 
 \subsubsection{Procedure}
 %Cut this down - cut down practice trial info?
-Participants were first presented with an instructions screen which described the task and informed them that they would be participating in a psychology experiment and could stop at any time.  Once they accepted the task, they were given eight practice trials.  During the practice trials, a pop-up window informed participants if they were incorrect.  
+Participants were first presented with an instructions screen which described the task and informed them that they would be participating in a psychology experiment and could stop at any time.  Once they accepted the task, they were given eight practice trials with feedback. 
+ % During the practice trials, a pop-up window informed participants if they were incorrect.  
 
-Before each trial, participants in the no context condition viewed a blank screen with a fixation cross while participants in the context condition viewed a context screen (e.g. Fig. \ref{fig:trial}).  The experiment automatically advanced after 3 seconds.  They then saw a picture and a sentence about the picture, and they were asked to read the sentence and select whether it was true or false by pressing ``Q'' (with their left hand) for false or ``P'' (with their right hand) for true.  Participants were instructed to answer as quickly and accurately as possible.  Once participants made their selection, they were automatically brought to the next trial after a 500 ms pause.  We recorded reaction times for each trial, measured as the time from when the pictures/sentence were presented to the moment when the response was made.
+In each trial, participants saw a context (3s) and then a picture and a sentence. They were asked to read the sentence and respond with a judgment of whether it was true or false when applied to the picture.  Participants were instructed to answer as quickly and accurately as possible.  We recorded reaction times for each trial, measured as the time from when the pictures/sentence were presented to the moment when the response was made.
 
 %At the end of the experiment, participants were taken to a screen that collected demographic information.  Participants were required to enter their gender, age, and native language, and then were invited to provide optional comments about the task.  
 
@@ -95,7 +86,7 @@ Before each trial, participants in the no context condition viewed a blank scree
 %Put data processign stuff here - or maybe in Participants section???  Cut this down.
 
 %%%REDO ANALYSES - TRIM OUTLIERS AFTER TAKING LOG RT
-We excluded from analysis six participants who listed a language other than English as their native language, seven participants for having participated in a previous iteration of the experiment, and four participants for having an overall accuracy of below 80\%.  Thus, data from a total of 83 participants were analyzed.  We also excluded trials with RTs greater than 3 standard deviations from the mean in log space from analysis.  
+We excluded from analysis six participants who listed a language other than English as their native language, seven participants for having participated in a previous iteration of the experiment, and four participants for having an overall accuracy of below 80\%.  Thus, data from a total of 83 participants were analyzed.  We also excluded trials with RTs greater than 3 standard deviations from the log-transformed mean.  
 
 \subsection{Results \& Discussion}
 
@@ -120,7 +111,7 @@ We excluded from analysis six participants who listed a language other than Engl
 \begin{figure}
 \begin{center} 
 \includegraphics[width=3.25in]{figures/study1_linegraph.pdf}
-\caption{\label{fig:e1line}Reaction times for each trial type, across different conditions.  Responses to true sentences are shown on the left, and false sentences are shown on the right.  Negative sentences are shown in grey, and positive sentences in black.  Error bars show 95\% confidence intervals.}
+\caption{\label{fig:e1line} Reaction times for each trial type, across different conditions.  Responses to true sentences are shown on the left, and false sentences are shown on the right.  Negative sentences are shown in grey, and positive sentences in black.  Error bars show 95\% confidence intervals.}
 \end{center} 
 \end{figure}
 
@@ -148,13 +139,19 @@ We excluded from analysis six participants who listed a language other than Engl
 
 %%%REDO RESULTS SECTION - PUT MAIN FINDINGS FIRST
 
+<<<<<<< HEAD
 Study 1 examined the effect of a visual context on the processing of negative sentences.  We found that true negative sentences were difficult to process when presented without context; in context, this effect disappeared (Fig. \ref{fig:e1line}).  This result is congruent with previous work on sentence verification, which has also found an interaction between negation and the truth value of a sentence \cite{hclark1972, carpenter1975, just1971, just1976}.  It is also congruent with work examining the effect of context on negative sentence processing \cite{wason1965, glenberg1999, ludtke2006, nieuwland2008, dale2011}.  
 
 To examine the reliability of these findings, we fit a linear mixed-effects model to reaction times in response to sentences.  We examined the interaction between sentence type, truth value, and context on reaction times.\footnote{All mixed-effects models were fit using the lme4 package in R version 2.15.3.  The model specification was as follows: \texttt{RT $\sim$ sentence~$\times$~truth~$\times$~context + (sentence~$\times$~truth~\textbar~subject) +  (sentence~$\times$~truth~\textbar~item)}.  Significance was calculated using the standard normal approximation to the $t$ distribution \cite{barr2013}.}  Results of this model show a main effect of truth value, with significant faster reaction times for true sentences compared to false sentences ($\beta= -196$, $p< .001$).\footnote{Coefficient weights are interpretable in milliseconds.}  Although there was no main effect of negation across both conditions, there was an interaction between sentence type and truth value ($\beta= 260$, $p< .001$), replicating the finding that participants respond fastest to true positive sentences but slowest to true negative sentences  \cite{hclark1972}.  However, there was a significant 3-way interaction between context condition, sentence type, and truth value ($\beta= -227$, $p< .01$), suggesting that this interaction was primarily driven by the slow RTs for true negative sentences in the no context condition.  
+=======
+Negative sentences were difficult to process when presented without context; in context, this effect disappeared \ref{fig:e1line}.  This result is congruent with previous work on sentence verification, which has also found an interaction between negation and the truth value of a sentence \cite<e.g.>{hclark1972} and with work on the role of context in negation \cite<e.g.>{wason1965, nieuwland2008, dale2011}.  
 
-To understand why context had the greatest effect on true negative sentences, consider what a true negative trial looks like to a participant in the no context condition.  These are trials in which the participant has no expectation about what the character might be holding, because no context was provided to set up such an expectation.  The participant would then see a picture of a boy, not holding anything, with the sentence ``Bob has no apples''.  These types of trials likely cause participants to falter because there is no reason for ``apples'' to be mentioned at all.  However, when a participant first views a context such as the one in Fig. \ref{fig:trial}, they can form an expectation that boys have apples.  Now, when the trial shows a boy with no apples, a sentence such as ``Bob has no apples'' makes sense and can be processed rapidly, because the image violates an expectation that boys should have apples.  
+To examine the reliability of these findings, we fit a linear mixed-effects model to participants' reaction times.  We examined the interaction between sentence type, truth value, and context on reaction times.\footnote{All mixed-effects models were fit using the lme4 package in R version 2.15.3.  The model specification was as follows: \texttt{RT $\sim$ sentence~$\times$~truth~$\times$~context + (sentence~$\times$~truth~\textbar~subject) +  (sentence~$\times$~truth~\textbar~item)}.  Significance was calculated using the standard normal approximation to the $t$ distribution \cite{barr2013}.}  Results of this model show a main effect of truth value, with significant faster reaction times for true sentences compared to false sentences ($\beta= -207$, $p< .001$).\footnote{Coefficient weights are interpretable in milliseconds.}  Although there was no main effect of negation across both conditions, there was an interaction between sentence type and truth value ($\beta= 282$, $p< .001$), replicating the finding that participants respond fastest to true positive sentences but slowest to true negative sentences.  Critically, there was a significant 3-way interaction between context condition, sentence type, and truth value ($\beta= -249$, $p< .01$), suggesting that this interaction was primarily driven by the slow RTs for true negative sentences in the no context condition.  
+>>>>>>> 791e1c06ddb43e8423aa2bbad97e35b8048f4cc7
 
-Study 1 contributes to a body of evidence suggesting that negative sentences are more felicitous when they are used to negate an expectation, and that such expectations can be set up by an appropriate context.  In Study 2, we examine how systematically manipulating the context might produce changes in reaction times by altering the strength of the expectations set up by the context.  
+To understand why context had the greatest effect on true negative sentences, consider what a true negative trial looks like to a participant in the no context condition.  These are trials in which the participant has no expectation about what the character might be holding, because no context was provided to set up such an expectation.  The participant would then see a picture of a boy, not holding anything, with the sentence ``Bob has no apples.''  These types of trials likely cause participants to falter because there is no reason for ``apples'' to be mentioned at all.  However, when a participant first views a context such as the one in Fig. \ref{fig:trial}, they can form an expectation that boys typically have apples.  Now, when the trial shows a boy with no apples, a sentence such as ``Bob has no apples'' makes sense.
+
+Study 1 contributes to a body of evidence suggesting that negative sentences are more felicitous when they are used to negate an expectation, and that such expectations can be set up by an appropriate context.  In Study 2, we examine how systematically manipulating the context might produce changes in reaction times by altering the strength of the expectations created by the context.  
 
 %\subsection{Discussion}
 
@@ -164,35 +161,41 @@ Study 1 contributes to a body of evidence suggesting that negative sentences are
 
 \section{Study 2: Varying strength of context}
 
-Should all contexts be equally helpful in processing negation? In Study 2, we test the idea that negation processing is facilitated in contexts where negative sentences would be most informative.  In Study 1, the sentence ``Bob has no apples'' is highly informative in the context condition, because a boy with no apples violates the expectation that all boys have apples.  However, if only one of the boys in the context had apples, the sentence ``Bob has no apples'' is less informative because the expectation that boys will have apples is weaker.
-
-In Study 2, we quantitatively manipulated the strength of the context.  Participants saw contexts consisting of either three (Study 2a) or four (Study 2b) characters in which some subset of the characters were holding the target item.  If the context gives participants a glimpse into the ``world'' that each trial exists in, this represents a small sample of the base rate of what the characters in this world look like.  By manipulating this base rate, we can change peoples' expectations about the trial character.  If the differences in reaction times between the no context and the context condition in Study 1 are due to the relative informativeness of the negative utterance based on the context, we should expect to see a linear relationship between the strength of the context and reaction time. 
+Should all contexts be equally helpful in processing negation? 
+% In Study 2, we test the idea that negation processing is facilitated in contexts where negative sentences would be most informative.  In Study 1, the sentence ``Bob has no apples'' is highly informative in the context condition, because a boy with no apples violates the expectation that all boys have apples.  However, if only one of the boys in the context had apples, the sentence ``Bob has no apples'' is less informative because the expectation that boys will have apples is weaker.
+In Study 2, we quantitatively manipulated the strength of the context.  Participants saw contexts consisting of either three (Study 2a) or four (Study 2b) characters in which some subset of the characters were holding the target item.  If the context gives participants a glimpse into the ``world'' that each trial exists in, this represents a small sample of the base rate of what the characters in this world look like.  By manipulating this base rate, we can change peoples' expectations about the trial character.  If the differences in reaction times between the no context and the context condition in Study 1 are due to the relative informativeness of the negative utterance based on the context, we should expect to see a relationship between the strength of the context and reaction time. 
 
 \subsection{Method}
 
+<<<<<<< HEAD
 \subsubsection{Participants } 
 We recruited 600 participants to participate in an online experiment through the mTurk website, 200 in 2a (129 male, 71 female) and  400 in 2b (205 male and 195 female). Participants ranged in age from 18-over 65.  We restricted participation to individuals in the United States. We paid participants 30 cents to participate in the study, which took approximately 5 minutes to complete.  
+=======
+\subsubsection{Participants} 
+
+We recruited 600 participants from mTurk. Participants ranged in age from 18-over 65; in Study 2a 129 participants were male and 71 were female and in Study 2b 205 participants were male and 195 were female.  We restricted participation to individuals in the United States. As before, we paid 30 cents for this 5 minute study.  
+>>>>>>> 791e1c06ddb43e8423aa2bbad97e35b8048f4cc7
 
 \subsubsection{Stimuli}
-\emph{Study 2a} 
 
-Study 2a used the same 28 trial items and sentence types as those used in Study .  A between-subjects context factor determined what type of context participants saw.  Context conditions showed $\frac{0}{3}$, $\frac{1}{3}$, $\frac{2}{3}$, or $\frac{3}{3}$ of the characters holding objects.  Trial stimuli were identical to the stimuli used in Study 1.  
+\emph{Study 2a} used the same 28 trial items and sentence types as those used in Study .  A between-subjects context factor determined what type of context participants saw.  Context conditions showed $\frac{0}{3}$, $\frac{1}{3}$, $\frac{2}{3}$, or $\frac{3}{3}$ of the characters holding objects.  Trial stimuli were identical to those in Study 1.  
 
-\emph{Study 2b}
-In Study 2b, the number of items was increased to 48.  The contexts were the same as those in Study 2a, except that each context contained 4 boys and there were therefore 5 context conditions ($\frac{0}{4}$, $\frac{1}{4}$, $\frac{2}{4}$, $\frac{3}{4}$ or $\frac{4}{4}$).  
+\emph{Study 2b} used 48 items.  The contexts were the same as in Study 2a, except that each context contained 4 boys and there were therefore 5 context conditions ($\frac{0}{4}$, $\frac{1}{4}$, $\frac{2}{4}$, $\frac{3}{4}$ or $\frac{4}{4}$).  
 
 \subsubsection{Procedure}
- The procedure for Study 2a was identical to the procedure in Study 1, with participants randomly assigned to one of the four context conditions.  
- 
- In Study 2b, participants were given four seconds (instead of three) to look at the context before the experiment automatically advanced.  This latency was changed to give participants more time to look at the slightly larger contexts; the procedure was otherwise identical to Studies 1 and 2a.  
+ The procedure for Study 2a was identical to that of Study 1, with participants randomly assigned to condition.   In Study 2b, participants were given 4s (instead of 3s) to look at the context before the experiment automatically advanced.  This latency was changed to give participants more time to look at the slightly larger contexts; the procedure was otherwise identical.
  
  \subsubsection{Data Processing}
 %Put data processign stuff here - or maybe in Participants section???  Cut this down.
 
 %%%REDO ANALYSES - TRIM OUTLIERS AFTER TAKING LOG RT
+<<<<<<< HEAD
 We excluded from analysis 25 participants who listed a language other than English as their native language (9 in 2a and 16 in 2b), 24 participants for participating in a previous iteration of the experiment (3 in 2a and 21 in 2b), and 35 participants for having an overall accuracy of below 80\% (11 in 2a and 24 in 2b).  Thus, we analyzed data from a total of 177 participants in Study 2a and 339 participants in Study 2b. As in Study 1, we only analyzed correct trials and excluded trials with RTs greater than 3 standard deviations from the mean in log space.  
+=======
+We excluded 23 participants who listed a language other than English as their native language (7 in 2a and 16 in 2b), 36 participants for participating in a previous iteration of the experiment (15 in 2a and 21 in 2b), and 35 participants for having an overall accuracy below 80\% (11 in 2a and 24 in 2b).  Thus, we analyzed data from a total of 167 participants in Study 2a and 339 participants in Study 2b. As in Study 1, we only analyzed correct trials and excluded trials with RTs greater than 3 SDs from the log-transformed mean. 
+>>>>>>> 791e1c06ddb43e8423aa2bbad97e35b8048f4cc7
 
-Because we were interested in the linear effect of context, results from these two studies were combined and analyzed together, with context condition re-coded as a continuous variable by calculating the proportion of people in each context condition who had a target item (e.g. the $\frac{1}{3}$ condition in Study 2a was recoded as .33; the $\frac{1}{4}$ condition in Study 2b was recoded as .25, etc.). 
+Because we were interested in the effect of context, results from these two studies were combined and analyzed together, with context condition re-coded as a continuous variable by calculating the proportion of people in each context condition who had a target item (e.g. the $\frac{1}{3}$ condition in Study 2a was recoded as .33). 
 
 \subsection{Results}
 %NOTE: these means are not quite accurate and need to be updated if I decide to post them anywhere!
@@ -268,13 +271,14 @@ Because we were interested in the linear effect of context, results from these t
 %\end{center}
 %\end{table}
 
-Study 2 examined how context affects participants' expectations about what each trial will look like.  We found that as the proportion of target items in the context increases, reaction times tend to decrease, particularly for negative and false sentences, supporting our hypothesis (Fig. \ref{fig:e2line}).  However, reaction times appear to increase slightly in the ``all'' condition, giving the impression of a U-shaped relationship between context and RT.  
+As the proportion of target items in the context increased, reaction times tended to decrease, particularly for negative and false sentences, supporting our hypothesis (Fig. \ref{fig:e2line}).  However, unexpectedly, reaction times increased slightly in the ``all'' condition, showing a U-shaped relationship between context and RT.  
 
-To examine the reliability of the linear relationship between context and RT, we first fit a linear mixed-effects model to reaction times in response to sentences.  We examined the interaction between sentence type, truth value, and context on reaction times.\footnote{The model specification was as follows: \texttt{RT $\sim$ sentence~$\times$~truth~$\times$~context + (sentence~$\times$~truth~\textbar~subject) +  (sentence~$\times$~truth~\textbar~item)}.}  As in Study 1, we found a significant effect of truth value, with significant faster reaction times for true sentences compared to false sentences ($\beta= -151$, $p< .001$).  Although there was not a significant main effect of negation, there was a significant interaction between sentence type and truth value, such that the difference between true positive and true negative was greater than the difference between the two types of false sentences ($\beta= 162$, $p< .001$).  We also found a linear effect of context on reaction time in line with our predictions, such that as the proportion of people with the target item in the context increased, reaction times decreased ($\beta= -167$, $p< .001$).   There was a significant 3-way interaction between context, sentence type, and truth value, such that the linear effect of context was most striking in true negative sentences ($\beta= -160$, $p< .01$).
+We fit a linear mixed-effects model to reaction times in response to sentences.  We examined the interaction between sentence type, truth value, and context on reaction times.\footnote{The model specification was as follows: \texttt{RT $\sim$ sentence~$\times$~truth~$\times$~context + (sentence~$\times$~truth~\textbar~subject) +  (sentence~$\times$~truth~\textbar~item)}.}  As in Study 1, we found a significant effect of truth value, with significant faster reaction times for true sentences compared to false sentences ($\beta= -151$, $p< .001$).  Although there was not a significant main effect of negation, there was a significant interaction between sentence type and truth value, such that the difference between true positive and true negative was greater than the difference between the two types of false sentences ($\beta= 162$, $p< .001$).  There was also a linear effect of context, such that as the proportion of people with the target item in the context increased, reaction times decreased ($\beta= -167$, $p< .001$).  As before, there was a significant 3-way interaction between context, sentence type, and truth value, such that the linear effect of context was most striking in true negative sentences ($\beta= -160$, $p< .01$).
 
-Responses in the $\frac{3}{3}$ and $\frac{4}{4}$ conditions suggest that the relationship between context and RT might not be entirely linear (Fig. \ref{fig:e2line}).  To test the significance of this curve, we added a term to our model to test for the quadratic effect of context.  This model reported a significant quadratic effect of context,  ($\beta= 696 $, $p< .001$).  To determine whether this model was a better fit to our data compared to the linear model, we conducted a $\chi^2$ test.  The quadratic model was a significantly better fit to our data ($\chi^{2}(1) = 71.25$, $p<.001$).  Looking at the data, it appears that the contexts that had the most significant effect on processing time were those in which 60\%-75\% of the characters in the context had the target item; contexts in which all of the characters had the target item lead to slightly increased reaction times.    
+Responses in the $\frac{3}{3}$ and $\frac{4}{4}$ conditions suggest that the relationship between context and RT is not linear, however (Fig. \ref{fig:e2line}).  We added a quadratic term to our model to test for this nonlinear effect of context ($\beta= 696 $, $p< .001$).  The quadratic model fit our data significantly better in a likelihood comparison test ($\chi^{2}(1) = 71.25$, $p<.001$).  
+% The contexts that had the most significant effect on processing time were those in which 60\%-75\% of the characters in the context had the target item; contexts in which all of the characters had the target item lead to slightly increased reaction times.    
 
-Quantitatively manipulating the strength of the context resulted in systematic changes in sentence processing, particularly for true negative sentences.  We proposed that this effect is due to the ways that context influences how informative a sentence is about a given picture.  Our results are consistent with this finding.  As the proportion of people in the context with the target item increases, describing the trial picture as \emph{not} having that target item becomes more informative.  That is, the more people in the context who have e.g. apples, the more we expect a person with nothing to be described as ``a boy with no apples''.  
+Quantitative manipulation of the strength of the context resulted in systematic changes in the processing cost of negation, particularly for true negative sentences.  This finding is consistent with our initial hypothesis: As the proportion of people in the context with the target item increases, describing the trial picture as \emph{not} having that target item becomes more informative.  That is, the more people in the context who have apples, the more we expect a person with nothing to be described as ``a boy with no apples.'' 
 
 %\subsection{Discussion}
 %Study 2 was designed to further examine the effect of context on reaction time.  We hypothesized that as the strength of the context increased (i.e. the number of boys with apples in the context), reaction times would decrease.  We found a significant linear effect of context, consistent with our prediction.  We also found a significant quadratic effect of context.  Looking at the data, it appears that the contexts that had the most significant effect on processing time were those in which 60\%-75\% of the characters in the context had the target item; contexts in which all of the characters had the target item lead to slightly increased reaction times.    
@@ -330,11 +334,12 @@ Quantitatively manipulating the strength of the context resulted in systematic c
 %Why is it that different contexts influence our predictions of how a speaker might describe a picture?  Our initial hypothesis was built on work by Frank and Goodman (2012), who created a model of language comprehension based on the Grice's Maxim of Quantity, which dictates that speakers should choose utterances that are maximally informative.  This model demonstrated that listeners expect speakers to produce utterances that are highly informative.  With respect to this work, the utterance ``A boy with no apples'' is highly informative if it refers to a boy with nothing in a world where every other boy has apples, because this utterance uniquely identifies the intended referent.  However, in a world where none of the other boys are holding apples, the sentence ``A boy with no apples'' is uninformative, because it refers to every other boy in this hypothetical world.  In the next section, we test whether a model of informativeness can predict processing times for true positive and true negative sentences.  
 
 \section{Model}
-In Studies 1 and 2, we demonstrated that a simple visual context can facilitate the processing of negative sentences.  Contexts that set up a strong expectation led to faster reaction times.  We suggest that the reason context has this effect is because participants expect speakers to be informative \cite{frank2012}.   If everyone in the context has a specific feature, and the trial character is lacking that feature, it is highly informative to describe the trial character in terms of the negation of the expected feature.  
 
-Previous work has proposed that the processing difficulty of a word is the surprisal of that word, calculated as the -log of the probability of the word occurring in a given syntactic and semantic context \cite{levy2008}.  Here, we extend this theory to the realm of pragmatics.  We focused this initial work on modeling only the true sentences.  
+Studies 1 and 2 show that a simple visual context can facilitate the processing of negative sentences, with contexts that set up a strong expectation leading to faster reaction times for negative sentences.  Our hypothesis was that this effect is driven by the expectation that speakers are informative \cite{grice1975,frank2012}: If everyone in a context has a specific feature, and the target character is lacking that feature, it is highly informative to describe the trial character in terms of the negation of the expected feature. In this section, we formalize this prediction. Because of the Gricean nature of our prediction, we focus here on predicting the processing of true sentences.   
 
-\begin{figure}
+% Previous work has proposed that the processing difficulty of a word is the surprisal of that word, calculated as the -log of the probability of the word occurring in a given syntactic and semantic context \cite{levy2008}.  Here, we extend this theory to the realm of pragmatics. 
+
+\begin{figure}[t]
 \begin{center} 
 \includegraphics[width=3.25in]{figures/model1_comparison.pdf}
 \includegraphics[width=3.25in]{figures/model2_comparison.pdf}
@@ -342,67 +347,66 @@ Previous work has proposed that the processing difficulty of a word is the surpr
 \end{center} 
 \end{figure}
 
-We modeled the behavior of participants in our experiments by calculating the surprisal of an utterance given the context and a specified referent.  To calculate the surprisal, we must first calculate the probability of the utterance occurring.  We define the probability of some message $w$ as proportional to its utility, using a simple Luce choice rule, 
+We modeled the behavior of participants in our experiments (following \citeNP{levy2008}) by assuming that reaction time is proportional to the surprisal of the utterance $w$, given the context $C$ and the speaker's intended referent $r_S$:
+
+\begin{equation}
+RT \sim -\log(P(w| r_s, C)).
+\end{equation}
+
+\noindent We then define the probability of the message as proportional to its utility using a simple Luce choice rule (following \citeNP{frank2012}):
 
 \begin{equation}\label{eq:pw1}
-P(w | r_s, C) \propto  e^{\alpha U(w;r_s,C)}
+P(w | r_s, C) \propto  e^{\alpha U(w;r_s,C)},
 \end{equation} 
 
-\noindent where $\alpha=1$.
-
-We define the utility function as the informativeness of the phrase minus the cost:
+\noindent where $\alpha=1$. This utility is defined as the informativeness of $w$ minus its cost:
 
 \begin{equation}\label{eq:utility}
-U(w;r_s,C) = I(w;r_s, C) - D(w)
+U(w;r_s,C) = I(w;r_s, C) - D(w).
 \end{equation}
 
-Following the derivation in Frank \& Goodman (2012), we define informativeness in context as the number of bits of information conveyed by the word, assuming that it has a uniform extension |w| in context:
+\noindent Informativeness in context is calculated as the number of bits of information conveyed by the word. We assume that $w$ has a uniform probability distribution over its extension in context (e.g. ``boy with apples'' applies to any boy who has apples, leading to a probability of $1/|w|$ of picking out each individual boy with apples) :
 
 \begin{equation}\label{eq:info}
-I(w;r_s, C) = -(-log(|w|^{-1}))
+I(w;r_s, C) = -(-\log(|w|^{-1})).
 \end{equation}
 
-\noindent The cost term $D(w)$ can then be defined in any number of ways; in this model we define it as the number of words in the utterance multiplied by a cost-per-word parameter.  Note that in our experiment, the negative sentences always have exactly one word more than the positive sentences.  Combining equations 1-3, and summing over all possible words in the vocabulary V, we get:
+\noindent The cost term $D(w)$ can then be defined in any number of ways; in this model we define it as the number of words in the utterance multiplied by a cost-per-word parameter.  Note that in our experiment, the negative sentences always have exactly one word more than the positive sentences. 
+
+Combining Equations \ref{eq:pw1}--\ref{eq:info}, and normalizing Equation \ref{eq:pw1} over all possible words in the vocabulary $V$, we have:
 
 \begin{equation}\label{eq:pw2}
-P(w | r_s, C) = \frac{ e^{log(|w|^{-1}) - D(w)}} {\sum_{w' \in V}{e^{log(|w'|^{-1}) - D(w')}}}
+P(w | r_s, C) = \frac{ e^{\log(|w|^{-1}) - D(w)}} {\sum_{w' \in V}{e^{\log(|w'|^{-1}) - D(w')}}}.
 \end{equation}
 
-We can then calculate the surprisal of the utterance by taking by taking $-\log(p(w|r_s,C))$, which we predict will be related to participants reaction times to respond to the same sentences in the same contexts.
+\noindent This model makes the prediction that as the number of e.g. boys with apples in the context increases, the informativeness of a negative sentences such as ``Bob has no apples'' increases, because the negative sentence selects an increasingly smaller subset of the context. Higher informativeness sentences will have higher probability, hence lower surprisal and faster RTs. 
 
-This model makes the prediction that as the number of e.g. boys with apples in the context increases, the informativeness of a negative sentences such as ``Bob has no apples'' increases, because the negative sentence selects an increasingly smaller subset of the context, and sentences that are more informative are higher probability.  As the probability of a sentence increases, the surprisal will decrease, and we expect these surprisal scores to be positively correlated with reaction times.
+% check cost param, compute significance
+We fit this model to data from Study 2, with cost = 2 (CHECK, Figure \ref{fig:model1_sims}). The model accounted for a substantial amount of variance in participant reaction times ($r=.72$ **CALCULATE SIG.**).  The model accurately predicts that negative sentences have higher surprisal (slower reaction times), and captures many of the context effects.  Nevertheless, the model fails to capture the U-shaped relationship seen in Study 2; specifically, it underestimates the surprisal of $\frac{0}{3}$ and $\frac{0}{4}$ contexts for positive sentences, and $\frac{3}{3}$ and $\frac{4}{4}$ contexts for negative sentences.
 
-We tested this model on the nine context conditions from Study 2, with $cost-per-word = 2$ (CHECK THIS), and compared the model predictions (surprisal) to our data in Studies 2a and 2b.  A plot of model fit can be seen in Figure \ref{fig:model1_sims}. 
-
-This model accounted for a substantial amount of variance in participant reaction times ($r=.72$ **CALCULATE SIG.**).  The model accurately predicts that negative sentences are more surprising (i.e. higher reaction times), and captures many of the context effects.  Nevertheless, the model fails to capture the U-shaped relationship seen in Study 2; specifically, it is underestimating the surprisal of $\frac{0}{3}$ and $\frac{0}{4}$ contexts for positive sentences, and $\frac{3}{3}$ and $\frac{4}{4}$ contexts for negative sentences.
-
-To improve our model, we considered the experimental contexts which our model was underestimating surprisal.  In our experimental paradigm, participants first saw the context slide \emph{without} the target, and then later saw the target picture separate from the context.  For $\frac{0}{3}$ and $\frac{0}{4}$ contexts followed by a true positive trial, this means that participants saw several boys with nothing, and then saw a boy holding something.  For $\frac{3}{3}$ and $\frac{4}{4}$ contexts followed by a true negative trial, participants saw several boys holding identical items, and then saw a boy with nothing.  In these trials, participants may have found the target picture surprising, regardless of the sentence that they read.  
-
-To account for this, we included a term of referent surprisal in our model, i.e. the probability of the referent occurring.  We compute this as: 
+In these trials, participants may have found the target picture surprising, regardless of the sentence that they read. For example, in $\frac{0}{3}$ and $\frac{0}{4}$ contexts followed by a true positive trial, this means that participants saw several boys with nothing, and then saw a boy holding something.  To account for reaction time related to seeing the target picture, we included the surprisal of the referent $r_S$ as well as the surprisal of the message $w$ given the referent. We estimated this probability via the count of the target property in the context, smoothed with a parameter $\lambda$:
 
 \begin{equation}\label{eq:pp}
-P(r | C) =  \frac{n MatchingPeople  + \uplambda}{nTotalPeople + 2\uplambda}
+P(r_S | C) =  \frac{\# Matching People  + \lambda}{\# Total People + 2\lambda}
 \end{equation}
 
-We then added $-\log(p(r|C))$ (Equation \ref{eq:pp}) to $-\log(p(w|r_s,C))$ (Equation \ref{eq:pw2}), to get a complete model of surprisal:
+We then added $-\log(p(r|C))$ (Equation \ref{eq:pp}) to $-\log(p(w|r_s,C))$ (Equation \ref{eq:pw2}), resulting in:
 
 \begin{equation}\label{eq:total}
-surprisal = -log(P(r|C)) + w*-log(P(w|r_s, C))
+RT \sim - log(P(w|r_s, C)) - \beta ~ log(P(r_S|C)).
 \end{equation}
 
-Note that this is similar to a model which accounts for the prior probability of the referent $p(r)$, with a weighting parameter $w$ to adjust the different effects of these two probabilities.  
+\noindent Note that this formulation is quite similar to a model which accounts for the prior probability of the referent $p(r_S)$; the only difference is our use of a weight $\beta$ to adjust the different effects of these two probabilities.  
 
-We fit this new model to the data from Study 2a only, which resulted in parameter values of $cost-per-word = .5$, $\uplambda=.2$, and$ w=.4$.  We then used these values to test model fit for the data from Study 2b.  The model fit to Study 2a continued to account for a substantial amount of variance in participant reaction times in Study 2b (see Table ****MAKE THIS TABLE****).  This final model showed a strong fit to the full data set (Studies 2a and 2b), as seen in Figure \ref{fig:model2_sims}.
+We fit this new model to the data from Study 2a only, which resulted in parameter values of $\text{cost} = .5$, $\lambda=.2$, and $\beta=.4$.  We then used these values to test model fit for the data from Study 2b.  The model provided a good fit to Study 2a and a similarly-strong parameter-free fit to Study 2b (see Table ****MAKE THIS TABLE****).  Fit to the full dataset is shown in Figure \ref{fig:model1_sims}.
 
 \section{General Discussion}
 
-This paper explored the relationship between negative sentence processing and the contexts in which these sentences are presented.  Previous work has shown that although it takes longer to evaluate negative sentences than positive sentences when presented with no context \cite{carpenter1975, just1971, just1976, hclark1972}, the presence of supportive pragmatic contexts \cite{wason1965, dale2011, glenberg1999, ludtke2006} can facilitate the processing of negative sentences.  This suggests that a pragmatic account of negative sentences is warranted, such that negative sentences are licensed in contexts that set up an expectation that is violated.  However, the extent to which expectation modulates the processing of negation has not been systematically explored until now.  
+What makes negation so hard? It takes longer to evaluate negative sentences than positive sentences when presented with no context, but these effects are mitigated in context. We suggested a Gricean account: the processing cost of negation is related to the degree to which it violates expectations about communication in context. In our studies, by changing the proportion of people in the context who held a target item, we systematically manipulated participants' contextual expectation.  We found a parametric relationship between the strength of the context and reaction times, and this relationship was well fit by a model of the surprisal of a sentence and its referent given the context.s.  
 
-In the studies presented here, we quantitatively manipulated the expectation set up by context by changing the proportion of people in the context who held a target item.  We found a parametric relationship between the strength of the context and reaction times.  We created a model of surprisal which demonstrated that the surprisal of a sentence given the context, combined with the surprisal of seeing a given referent, was correlated with participants' reaction times in response to sentences in the same contexts.  
+Previous work on sentence processing has suggested that processing negation is fundamentally difficult, perhaps due to the processing cost of negating a proposition (e.g. \citeNP{clark1972}) or the cost of suppressing an affirmative representation (e.g. \citeNP{kaup2003}).  Our work here suggests that the difficulty of negation may not be unique to negation at all; instead, general pragmatic mechanisms could be driving this effect.  Due to the specific pragmatics of negation, negative sentences presented without context are uninformative and are thus unlikely to be produced, leading to increased surprisal and slower processing times.  In conversation, however, negative sentences are often produced when some expectation has been violated, decreasing surprisal and processing time.  
 
-Previous work on sentence processing has suggested that processing negation is fundamentally difficult, perhaps due to the processing cost of negating a proposition (e.g. \citeNP{clark1972}) or the cost of suppressing an affirmative representation (e.g. \citeNP{kaup2003}).  Our work here suggests that the difficulty of negation may not be unique to negation at all; instead, a general mechanism of surprisal could be driving this effect.  Due to the pragmatics of negation, negative sentences presented without context are uninformative and are thus unlikely to be produced, leading to increased surprisal and processing times.  In conversation, however, negative sentences are often produced when some expectation has been violated, decreasing surprisal and processing time.  
-
-Although our specific focus for this work was to understand the processing of negative sentences, this work can be extended to quantify the effect that context has on sentence processing more generally.  Debates about the effects of pragmatics on linguistic processing exist in other domains as well (e.g. the processing of scalar implicatures, \citeNP{huang2009, huang2011, grodner2010}).  Formal models of pragmatics can shed light more generally on the role that context plays in linguistic processing. 
+Although our specific focus was to understand the processing of negative sentences, this work can be extended to quantify the effect that context has on sentence processing more generally.  Debates about the effects of pragmatics on linguistic processing exist in other domains as well (e.g. the processing of scalar implicatures, \citeNP{huang2009, huang2011, grodner2010}).  Formal models of pragmatics can shed light more generally on the role that context plays in linguistic processing. 
 
 \section{Acknowledgments}
 This material is based upon work supported by the National Science Foundation Graduate Research Fellowship. Any opinion, findings, and conclusions or recommendations expressed in this material are those of the authors(s) and do not necessarily reflect the views of the National Science Foundation.
