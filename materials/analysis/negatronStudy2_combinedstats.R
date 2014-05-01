@@ -147,15 +147,15 @@ mss <- aggregate(rt ~ text.condition + response + context.standard + version,dat
 mss$errs <- errs$rt
 
 ggplot(mss, aes(y=rt, x=context.standard)) + 
-	geom_pointrange(aes(x=context.standard,y=rt, color=text.condition,	shape=version, ymin=rt-errs,ymax=rt+errs), position=position_dodge(.05)) + 
+	geom_pointrange(aes(x=context.standard,y=rt, color=text.condition, ymin=rt-errs,ymax=rt+errs), position=position_dodge(.05)) + 
 	facet_wrap(~ response) +
-	stat_smooth(aes(fill=text.condition),color="black",span=1) + 
+	stat_smooth(aes(fill=text.condition, color=text.condition),span=1) + 
 	#coord_cartesian(ylim=c(-.6,.8)) +
 	xlab("Context Proportion") + ylab("Reaction Time") +
 	theme_bw() +
 	scale_shape("Version", labels=c("Study 2a","Study 2b")) +
-	scale_fill_grey("Sentence Condition") + 
-	scale_color_grey("Sentence Condition") + 
+  scale_color_manual("Sentence Condition", values=c("#A43946","#123159")) +
+  scale_fill_manual("Sentence Condition", values=c("#EB97A1","#A1BBDC")) +
 	plot.style
 
 ######Analyses (combined data)######

@@ -1,5 +1,6 @@
 \documentclass[10pt,letterpaper]{article}
 
+\usepackage{hyperref}
 \usepackage{cogsci}
 \usepackage{pslatex}
 \usepackage{pdfsync}
@@ -8,6 +9,7 @@
 \usepackage{graphicx}
 \usepackage{topcapt}
 \usepackage{color}
+
 
 \title{A pragmatic account of the processing of negative sentences}
 \author{{\large \bf Ann E. Nordmeyer} \\ \texttt{anordmey@stanford.edu}\\ Department of Psychology \\ Stanford University \\ 
@@ -84,7 +86,7 @@ We excluded from analysis 6 participants who did not list English as their nativ
 
 Negative sentences were difficult to process when presented without context; in context, this effect disappeared (Fig.\ \ref{fig:e1line}).  This result is congruent with previous work on sentence verification, which has also found a main effect of negation \cite<e.g.>{hclark1972} and with work examining the role of context in negation \cite<e.g.>{wason1965, nieuwland2008, dale2011}.  
 
-To examine the reliability of these findings, we fit a linear mixed-effects model to participants' reaction times.  We examined the interaction between sentence type, truth value, and context on reaction times.\footnote{All mixed-effects models were fit using the lme4 package in R version 2.15.3.  The model specification was as follows: \texttt{RT $\sim$ sentence~$\times$~truth~$\times$~context + (sentence~$\times$~truth~\textbar~subject) +  (sentence~$\times$~truth~\textbar~item)}.  Significance was calculated using the standard normal approximation to the $t$ distribution \cite{barr2013}.}  Results of this model show a main effect of truth value, with significant faster reaction times for true sentences compared to false sentences ($\beta= -296$, $p< .001$).\footnote{Coefficient weights are interpretable in milliseconds.}  Although there was no main effect of negation across both conditions, there was an interaction between sentence type and truth value ($\beta= 260$, $p< .001$), replicating the finding that participants respond fastest to true positive sentences but slowest to true negative sentences \cite{hclark1972}.  Critically, there was a significant 3-way interaction between context condition, sentence type, and truth value ($\beta= -227$, $p< .01$), suggesting that this interaction was primarily driven by the slow RTs for true negative sentences in the no context condition.  
+To examine the reliability of these findings, we fit a linear mixed-effects model to participants' reaction times.  We examined the interaction between sentence type, truth value, and context on reaction times.\footnote{All mixed-effects models were fit using the lme4 package in R version 2.15.3.  The model specification was as follows: \texttt{RT $\sim$ sentence~$\times$~truth~$\times$~context + (sentence~$\times$~truth~\textbar~subject) +  (sentence~$\times$~truth~\textbar~item)}.  Significance was calculated using the standard normal approximation to the $t$ distribution \cite{barr2013}. Data and analysis code can be found at \href{http://github.com/anordmey/cogsci14_negatron}{http://github.com/anordmey/cogsci14\textunderscore negatron}} Results of this model show a main effect of truth value, with significant faster reaction times for true sentences compared to false sentences ($\beta= -196$, $p< .001$).\footnote{Coefficient weights are interpretable in milliseconds.}  Although there was no main effect of negation across both conditions, there was an interaction between sentence type and truth value ($\beta= 260$, $p< .001$), replicating the finding that participants respond fastest to true positive sentences but slowest to true negative sentences \cite{hclark1972}.  Critically, there was a significant 3-way interaction between context condition, sentence type, and truth value ($\beta= -227$, $p< .01$), suggesting that this interaction was primarily driven by the slow RTs for true negative sentences in the no context condition.  
 
 To understand why context had the strongest effect on true negative sentences, consider what a true negative trial looks like in the no context condition.  These are trials in which the participant has no expectation about what the character might be holding, because no context was provided to set up such an expectation.  The participant would then see a picture of an empty-handed boy with the sentence ``Bob has no apples.''  These types of trials likely cause participants to falter because there is no reason for ``apples'' to be mentioned at all.  However, when a participant first views a context such as the one in Fig.\ \ref{fig:trial}, they can form an expectation that boys typically have apples.  Now, when participants see a boy with no apples, a sentence such as ``Bob has no apples'' makes sense.
 

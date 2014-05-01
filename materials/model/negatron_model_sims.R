@@ -15,7 +15,7 @@ ci.high <- function(x) {
   quantile(bootstrap(1:length(x),1000,theta,x)$thetastar,.975) - mean(x)}
 
 
-
+setwd("~/Documents/Work/Publications/Writing/cogsci_2014_negatron/materials")
 source("model/negatron_model.R")
 source("model/negatron_model_data.R") 
 #data.2a is Study 2a (3 person contexts)
